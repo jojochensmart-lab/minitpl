@@ -1,0 +1,7 @@
+import {
+  "jojochensmart-lab/minitpl/src" @src,
+}
+
+options(
+  "is-main": true,
+)
