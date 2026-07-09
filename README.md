@@ -75,6 +75,11 @@ Run all tests with:
 moon test
 ```
 
+## CI
+
+GitHub Actions runs formatting checks, project checks, tests, and builds on
+push and pull request.
+
 ## API Example
 
 ```moonbit
