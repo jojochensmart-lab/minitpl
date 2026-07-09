@@ -4,3 +4,22 @@ target/
 target
 .mooncakes/
 .moonagent/
+
+# MoonBit and local tooling caches
+.moon/
+.mooncache/
+coverage/
+uncovered.log
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# OS and editor files
+Thumbs.db
+.vscode/
+.idea/

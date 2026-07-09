@@ -1,0 +1,15 @@
+* text=auto eol=lf
+
+*.mbt text eol=lf
+*.mbti text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.txt text eol=lf
+*.pkg text eol=lf
+
+*.wasm binary
+*.core binary
+*.mi binary
