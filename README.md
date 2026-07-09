@@ -114,3 +114,8 @@ For example, `Hello {{name}}!` with no `name` value becomes `Hello !`.
 - Add more tests for edge cases.
 - Expand examples and documentation.
 - Add CI for automatic check, test, and build.
+
+## License
+
+This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE)
+for details.
