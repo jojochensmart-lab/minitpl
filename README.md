@@ -80,6 +80,24 @@ moon test
 GitHub Actions runs project checks, tests, and builds on push and pull request.
 For local development, run `moon fmt` before committing MoonBit source changes.
 
+## Publishing
+
+The package is prepared for publishing to mooncakes.io, but it has not been
+published yet. Before publishing, run:
+
+```powershell
+moon check
+moon test
+moon build
+moon publish --dry-run
+```
+
+After logging in with `moon login`, publish with:
+
+```powershell
+moon publish
+```
+
 ## API Example
 
 ```moonbit
