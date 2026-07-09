@@ -91,6 +91,13 @@ Output:
 Hello MiniTPL!
 ```
 
+## Missing Variables
+
+If a variable name does not exist in the provided keys, MiniTPL renders that
+variable as an empty string.
+
+For example, `Hello {{name}}!` with no `name` value becomes `Hello !`.
+
 ## Current Limitations
 
 - Only simple `{{name}}` variable replacement is supported.

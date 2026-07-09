@@ -44,3 +44,19 @@ test "render Chinese variable value" {
 test "render missing variables as empty string" {
   assert_eq(render("Hello {{name}}!", [], []), "Hello !")
 }
+
+///|
+test "render known and missing variables" {
+  let tpl = "{{name}} uses {{tool}}."
+  let keys = ["name"]
+  let vals = ["MiniTPL"]
+  assert_eq(render(tpl, keys, vals), "MiniTPL uses .")
+}
+
+///|
+test "render multiple missing variables as empty strings" {
+  let tpl = "{{first}}-{{second}}-{{third}}"
+  let keys = ["second"]
+  let vals = ["B"]
+  assert_eq(render(tpl, keys, vals), "-B-")
+}
