@@ -43,6 +43,30 @@ Expected output:
 Hello MiniTPL! You are 5 years old.
 ```
 
+Run the English example:
+
+```powershell
+moon run examples/english
+```
+
+Expected output:
+
+```text
+Hello MoonBit developer, welcome to MiniTPL.
+```
+
+Run the Chinese example:
+
+```powershell
+moon run examples/chinese
+```
+
+Expected output:
+
+```text
+你好，MoonBit 开发者！欢迎使用 MiniTPL。
+```
+
 ## Running Tests
 
 Run all tests with:
