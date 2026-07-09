@@ -77,8 +77,8 @@ moon test
 
 ## CI
 
-GitHub Actions runs formatting checks, project checks, tests, and builds on
-push and pull request.
+GitHub Actions runs project checks, tests, and builds on push and pull request.
+For local development, run `moon fmt` before committing MoonBit source changes.
 
 ## API Example
 

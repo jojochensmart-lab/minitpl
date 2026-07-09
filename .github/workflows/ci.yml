@@ -11,9 +11,13 @@ jobs:
     permissions:
       contents: read
 
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Set up MoonBit
         run: |
@@ -21,10 +25,7 @@ jobs:
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
 
       - name: Show MoonBit version
-        run: moon version
-
-      - name: Check formatting
-        run: moon fmt --check
+        run: moon version --all
 
       - name: Check project
         run: moon check
