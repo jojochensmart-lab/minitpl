@@ -1,3 +1,4 @@
+///|
 fn main {
   let tpl : String = "Hello {{name}}! You are {{age}} years old."
   let keys : Array[String] = ["name", "age"]

@@ -36,3 +36,28 @@ pub fn render(tpl : String, keys : Array[String], vals : Array[String]) -> Strin
   
   result + buf
 }
+
+
+test {
+  let tpl : String = "Hello {{name}}!"
+  let result : String = render(tpl, ["name"], ["MoonBit"])
+  if result != "Hello MoonBit!" {
+    abort("test failed")
+  }
+}
+
+test {
+  let tpl : String = "{{a}} and {{b}}"
+  let result : String = render(tpl, ["a", "b"], ["X", "Y"])
+  if result != "X and Y" {
+    abort("test failed")
+  }
+}
+
+test {
+  let tpl : String = "Hello {{unknown}}!"
+  let result : String = render(tpl, ["name"], ["MoonBit"])
+  if result != "Hello !" {
+    abort("test failed")
+  }
+}
