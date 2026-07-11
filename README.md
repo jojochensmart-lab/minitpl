@@ -1,13 +1,18 @@
 # MiniTPL
 
-MiniTPL is a simple template renderer implemented in MoonBit.
+MiniTPL is a lightweight MoonBit template toolkit for configuration generation,
+document generation, and code snippet generation.
 
-It focuses on a small core goal: given a template string and data, render the
-final string output.
+Besides basic variable replacement, it provides variable extraction, template
+static checks, and missing-variable diagnostics so templates can be validated
+early in CI or build workflows.
 
 ## Features
 
 - Replaces variables in `{{name}}` form.
+- Extracts template variables in source order.
+- Keeps repeated variables in extraction results.
+- Checks empty variable names, unclosed placeholders, and missing variables.
 - Keeps plain text unchanged.
 - Supports passing variable names and values as arrays.
 
@@ -114,6 +119,23 @@ Output:
 Hello MiniTPL!
 ```
 
+Extract variables from a template:
+
+```moonbit
+let vars : Array[String] = @src.extract_vars("Hello {{ name }}, {{age}}")
+```
+
+The result is `["name", "age"]`. Variable names are trimmed, order is preserved,
+and repeated variables are kept.
+
+Lint a template before rendering:
+
+```moonbit
+let diagnostics : Array[String] = @src.lint("Hello {{name}} {{tool}}", ["name"])
+```
+
+The result is `["missing variable: tool"]`.
+
 ## Missing Variables
 
 If a variable name does not exist in the provided keys, MiniTPL renders that
@@ -124,6 +146,7 @@ For example, `Hello {{name}}!` with no `name` value becomes `Hello !`.
 ## Current Limitations
 
 - Only simple `{{name}}` variable replacement is supported.
+- This project does not aim to be compatible with full Mustache syntax.
 - Missing variables render as an empty string.
 - There is no escaping syntax yet.
 - There is no support for conditionals, loops, filters, or nested data.

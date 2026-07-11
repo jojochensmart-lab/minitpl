@@ -1,4 +1,19 @@
 ///|
+fn assert_string_array_eq(
+  actual : Array[String],
+  expected : Array[String],
+) -> Unit {
+  if actual.length() != expected.length() {
+    abort("array length mismatch")
+  }
+  for i = 0; i < actual.length(); i = i + 1 {
+    if actual[i] != expected[i] {
+      abort("array item mismatch")
+    }
+  }
+}
+
+///|
 test "render replaces variables" {
   let tpl = "Hello {{name}}! You are {{age}} years old."
   let keys = ["name", "age"]
@@ -59,4 +74,50 @@ test "render multiple missing variables as empty strings" {
   let keys = ["second"]
   let vals = ["B"]
   assert_eq(render(tpl, keys, vals), "-B-")
+}
+
+///|
+test "extract single variable" {
+  assert_string_array_eq(extract_vars("Hello {{name}}!"), ["name"])
+}
+
+///|
+test "extract multiple variables" {
+  assert_string_array_eq(extract_vars("Hello {{name}}, {{age}}"), [
+    "name", "age",
+  ])
+}
+
+///|
+test "extract trims variable names" {
+  assert_string_array_eq(extract_vars("Hello {{ name }}, {{  age  }}"), [
+    "name", "age",
+  ])
+}
+
+///|
+test "extract keeps repeated variables" {
+  assert_string_array_eq(extract_vars("{{name}} and {{name}}"), ["name", "name"])
+}
+
+///|
+test "lint detects empty variable name" {
+  assert_string_array_eq(lint("Hello {{}}!", []), ["empty variable name"])
+}
+
+///|
+test "lint detects unclosed placeholder" {
+  assert_string_array_eq(lint("Hello {{name", ["name"]), [
+    "unclosed placeholder",
+  ])
+}
+
+///|
+test "lint reports missing variable" {
+  assert_string_array_eq(lint("Hello {{name}}!", []), ["missing variable: name"])
+}
+
+///|
+test "lint treats variable spacing as valid" {
+  assert_string_array_eq(lint("Hello {{ name }}!", ["name"]), [])
 }

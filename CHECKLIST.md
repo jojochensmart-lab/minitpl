@@ -39,3 +39,13 @@ moon publish --dry-run
 moon login
 moon publish
 ```
+
+## Difference From Mustache-like Template Engines
+
+- MiniTPL does not aim for full Mustache syntax compatibility.
+- MiniTPL focuses on lightweight, predictable, easy-to-test template behavior.
+- MiniTPL provides template variable analysis through `extract_vars`.
+- MiniTPL provides error and warning diagnostics through `lint`.
+- MiniTPL is intended for CI or build workflows where missing template variables
+  should be detected before rendering generated configuration, documentation, or
+  code snippets.

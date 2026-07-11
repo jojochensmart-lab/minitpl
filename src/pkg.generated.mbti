@@ -2,6 +2,10 @@
 package "jojochensmart-lab/minitpl/src"
 
 // Values
+pub fn extract_vars(String) -> Array[String]
+
+pub fn lint(String, Array[String]) -> Array[String]
+
 pub fn render(String, Array[String], Array[String]) -> String
 
 // Errors
