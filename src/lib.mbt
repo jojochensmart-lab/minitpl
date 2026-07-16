@@ -1,4 +1,8 @@
 ///|
+/// Renders `{{name}}` placeholders using parallel key/value arrays.
+///
+/// Whitespace around placeholder names is ignored. A placeholder whose name is
+/// not present in `keys` is rendered as an empty string.
 pub fn render(
   tpl : String,
   keys : Array[String],
@@ -45,6 +49,9 @@ pub fn render(
 }
 
 ///|
+/// Extracts placeholder names in source order.
+///
+/// Whitespace around names is trimmed and repeated variables are preserved.
 pub fn extract_vars(tpl : String) -> Array[String] {
   let vars : Array[String] = []
   let mut buf : String = ""
@@ -89,6 +96,8 @@ fn has_key(keys : Array[String], name : String) -> Bool {
 }
 
 ///|
+/// Returns diagnostics for empty names, unclosed placeholders, and variables
+/// that are not present in `keys`.
 pub fn lint(tpl : String, keys : Array[String]) -> Array[String] {
   let diagnostics : Array[String] = []
   let mut buf : String = ""

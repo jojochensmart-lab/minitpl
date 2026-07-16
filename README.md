@@ -1,7 +1,7 @@
 # MiniTPL
 
 MiniTPL is a lightweight MoonBit template toolkit for configuration generation,
-document fragments, and code snippets.
+document generation, and code snippet generation.
 
 Besides basic variable replacement, it provides variable extraction, template
 static checks, and missing-variable diagnostics so templates can be validated
@@ -81,11 +81,11 @@ For local development, run `moon fmt` before committing MoonBit source changes.
 
 MiniTPL is published to mooncakes.io as:
 
-`joanna/minitpl@0.1.1`
+`joanna/minitpl@0.1.2`
 
 Package page:
 
-https://mooncakes.io/docs/joanna/minitpl@0.1.1
+https://mooncakes.io/docs/joanna/minitpl@0.1.2
 
 ## API Example
 
