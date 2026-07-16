@@ -87,21 +87,13 @@ For local development, run `moon fmt` before committing MoonBit source changes.
 
 ## Publishing
 
-The package is prepared for publishing to mooncakes.io, but it has not been
-published yet. Before publishing, run:
+MiniTPL has been published to mooncakes.io as:
 
-```powershell
-moon check
-moon test
-moon build
-moon publish --dry-run
-```
+`joanna/minitpl@0.1.0`
 
-After logging in with `moon login`, publish with:
+Package page:
 
-```powershell
-moon publish
-```
+https://mooncakes.io/docs/joanna/minitpl@0.1.0
 
 ## API Example
 
