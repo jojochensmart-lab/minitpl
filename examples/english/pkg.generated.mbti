@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "joanna/minitpl"
+package "joanna/minitpl/examples/english"
 
 // Values
 
@@ -10,4 +10,3 @@ package "joanna/minitpl"
 // Type aliases
 
 // Traits
-

@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "jojochensmart-lab/minitpl/src"
+package "joanna/minitpl/src"
 
 // Values
 pub fn extract_vars(String) -> Array[String]

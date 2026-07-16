@@ -1,7 +1,7 @@
 # MiniTPL
 
 MiniTPL is a lightweight MoonBit template toolkit for configuration generation,
-document generation, and code snippet generation.
+document fragments, and code snippets.
 
 Besides basic variable replacement, it provides variable extraction, template
 static checks, and missing-variable diagnostics so templates can be validated
@@ -9,12 +9,15 @@ early in CI or build workflows.
 
 ## Features
 
-- Replaces variables in `{{name}}` form.
-- Extracts template variables in source order.
-- Keeps repeated variables in extraction results.
-- Checks empty variable names, unclosed placeholders, and missing variables.
-- Keeps plain text unchanged.
-- Supports passing variable names and values as arrays.
+- Basic `{{name}}` variable replacement with `render`.
+- Trims whitespace around variable names, such as `{{ name }}`.
+- Leniently renders missing variables as an empty string.
+- Extracts template variables in source order with `extract_vars`.
+- Statically checks templates with `lint`.
+- Diagnoses empty variable names.
+- Diagnoses unclosed placeholders.
+- Diagnoses missing variables.
+- Has no external dependencies.
 
 ## Installation And Running
 
@@ -24,15 +27,12 @@ Make sure MoonBit is installed and available in your terminal:
 moon version
 ```
 
-Check the project:
+Format, check, test, and build the project:
 
 ```powershell
+moon fmt
 moon check
-```
-
-Build the project:
-
-```powershell
+moon test
 moon build
 ```
 
@@ -72,14 +72,6 @@ Expected output:
 你好，MoonBit 开发者！欢迎使用 MiniTPL。
 ```
 
-## Running Tests
-
-Run all tests with:
-
-```powershell
-moon test
-```
-
 ## CI
 
 GitHub Actions runs project checks, tests, and builds on push and pull request.
@@ -87,13 +79,13 @@ For local development, run `moon fmt` before committing MoonBit source changes.
 
 ## Publishing
 
-MiniTPL has been published to mooncakes.io as:
+MiniTPL is published to mooncakes.io as:
 
-`joanna/minitpl@0.1.0`
+`joanna/minitpl@0.1.1`
 
 Package page:
 
-https://mooncakes.io/docs/joanna/minitpl@0.1.0
+https://mooncakes.io/docs/joanna/minitpl@0.1.1
 
 ## API Example
 
@@ -137,12 +129,10 @@ For example, `Hello {{name}}!` with no `name` value becomes `Hello !`.
 
 ## Current Limitations
 
-- Only simple `{{name}}` variable replacement is supported.
-- This project does not aim to be compatible with full Mustache syntax.
-- Missing variables render as an empty string.
-- There is no escaping syntax yet.
-- There is no support for conditionals, loops, filters, or nested data.
-- The current API receives keys and values as parallel arrays.
+- Only simple `{{name}}` placeholder rendering is supported.
+- MiniTPL does not aim for full Mustache compatibility.
+- `if`, `each`, filters, and nested data are not supported yet.
+- Missing variables render as an empty string by default.
 
 ## Roadmap
 

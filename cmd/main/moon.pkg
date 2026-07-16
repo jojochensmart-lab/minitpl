@@ -1,5 +1,5 @@
 import {
-  "jojochensmart-lab/minitpl/src",
+  "joanna/minitpl/src",
 }
 
 options(

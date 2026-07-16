@@ -1,16 +1,23 @@
-fn do_render(tpl : String, keys : Array[String], vals : Array[String]) -> String {
+///|
+fn do_render(
+  tpl : String,
+  keys : Array[String],
+  vals : Array[String],
+) -> String {
   let mut result : String = ""
   let mut buf : String = ""
   let mut in_var : Bool = false
   let mut i : Int = 0
   while i < tpl.length() {
-    let ch : String = tpl[i:i+1].to_owned()
-    if ch == "{" && i + 1 < tpl.length() && tpl[i+1:i+2].to_owned() == "{" {
+    let ch : String = tpl[i:i + 1].to_owned()
+    if ch == "{" && i + 1 < tpl.length() && tpl[i + 1:i + 2].to_owned() == "{" {
       result = result + buf
       buf = ""
       in_var = true
       i = i + 2
-    } else if ch == "}" && i + 1 < tpl.length() && tpl[i+1:i+2].to_owned() == "}" {
+    } else if ch == "}" &&
+      i + 1 < tpl.length() &&
+      tpl[i + 1:i + 2].to_owned() == "}" {
       let var_name : String = buf.trim().to_owned()
       let mut found_val : String = ""
       for j = 0; j < keys.length(); j = j + 1 {
@@ -34,6 +41,7 @@ fn do_render(tpl : String, keys : Array[String], vals : Array[String]) -> String
   result + buf
 }
 
+///|
 test "render simple variable" {
   let tpl : String = "Hello {{name}}!"
   let keys : Array[String] = ["name"]
@@ -44,6 +52,7 @@ test "render simple variable" {
   }
 }
 
+///|
 test "render multiple variables" {
   let tpl : String = "{{a}} and {{b}}"
   let keys : Array[String] = ["a", "b"]
@@ -54,6 +63,7 @@ test "render multiple variables" {
   }
 }
 
+///|
 test "render unknown variable" {
   let tpl : String = "Hello {{unknown}}!"
   let keys : Array[String] = ["name"]
